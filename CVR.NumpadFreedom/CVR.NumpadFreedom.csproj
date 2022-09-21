@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+    <RootNamespace>CVR.NumpadFreedomMod</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Analyzer Include="$(DevEnvDir)Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="0Harmony">
+      <HintPath>$(CVR_DIR)/MelonLoader\0Harmony.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\ChilloutVR\ChilloutVR_Data\Managed\Assembly-CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="MelonLoader">
+      <HintPath>$(CVR_DIR)/MelonLoader\MelonLoader.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\ChilloutVR\ChilloutVR_Data\Managed\UnityEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\ChilloutVR\ChilloutVR_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="copy /Y &quot;$(TargetDir)$(TargetFileName)&quot; &quot;%25CVR_DIR%25\Mods&quot;" />
+  </Target>
+</Project>
+<!--Generated with love using ML.Templates-->
